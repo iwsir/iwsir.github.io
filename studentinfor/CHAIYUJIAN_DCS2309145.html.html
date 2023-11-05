@@ -1,0 +1,47 @@
+<html>
+<head>
+    <title>Student information</title>
+    <style>
+        th, td 
+        {
+            text-align: center;
+        }
+    </style>
+</head>
+<body bgcolor="white" text="orange">
+    <h1 align="center">Student information</h1>
+    <table border="1" style="width: 50%;" align="center">
+        <tr>
+            <th width=10%>No.</th>
+            <th>Name</th>
+            <th width = 20%>Level.</th>
+
+        </tr>
+        <tbody id="StudentTable"></tbody>
+    </table>
+    <script>
+        fetch('CHAIYUJIAN_DCS2309145.xml') 
+    .then(response => response.text())
+    .then(data => {
+        const parser = new DOMParser();
+        const xmlDoc = parser.parseFromString(data, 'text/xml');
+        const Students = xmlDoc.getElementsByTagName('Student');
+        const table = document.getElementById('StudentTable');
+        for (let i = 0; i < Students.length; i++) {
+            const Student = Students[i];
+            const name = Student.getElementsByTagName('name')[0].textContent;
+            const level = Student.getElementsByTagName('level')[0].textContent;
+            const row = table.insertRow(i);
+            const numberCell = row.insertCell(0);
+            const nameCell = row.insertCell(1);
+            const levelCell = row.insertCell(2);
+            numberCell.innerHTML = i + 1;
+            nameCell.innerHTML = name;  //Corrected variable name
+            levelCell.innerHTML = level;
+        }
+    })
+    .catch(error => console.error(error));
+
+    </script>
+</body>
+</html>
