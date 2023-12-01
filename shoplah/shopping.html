@@ -212,22 +212,20 @@
                 console.error(error);
             }
         }
+function updateCartPage() {
+    // Retrieve selected items from local storage
+    const selectedItems = JSON.parse(localStorage.getItem('selectedItems')) || [];
 
-        function updateCartPage() {
-            // Retrieve selected items from local storage
-            const selectedItems = JSON.parse(localStorage.getItem('selectedItems')) || [];
+    // Add the latest item to the selected items array
+    const latestItem = { product: 'Iphone 14 (256gb)', quantity: 1, price: 'RM3000' };
+    selectedItems.push(latestItem);
 
-            // Add the latest item to the selected items array
-            const latestItem = { product: 'Iphone 14 (256gb)', quantity: 1, price: 'RM3000' };
-            selectedItems.push(latestItem);
+    // Update local storage with the modified selected items array
+    localStorage.setItem('selectedItems', JSON.stringify(selectedItems));
 
-            // Update local storage with the modified selected items array
-            localStorage.setItem('selectedItems', JSON.stringify(selectedItems));
+    // Redirect to the cart.html page
+    window.location.href = 'https://iwsir.github.io/shoplah/cart.html';
+}
 
-            // Redirect to the cart.html page
-            window.location.href = 'https://iwsir.github.io/shoplah/cart.html';
-        }
-    </script>
-</body>
 
 </html>
