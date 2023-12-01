@@ -164,6 +164,7 @@
         </table>
     </div>
 
+    <!-- Popup for item confirmation -->
     <div class="popup" id="confirmationPopup">
         <p>Added to cart:</p>
         <p id="popupItem"></p>
@@ -171,6 +172,9 @@
         <button onclick="confirmAddToCart()">Confirm</button>
         <button onclick="closePopup()">No</button>
     </div>
+
+    <!-- Button to manually view the cart -->
+    <button onclick="viewCart()">View Cart</button>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/js/all.min.js"></script>
 
@@ -203,10 +207,8 @@
                     throw new Error('Failed to add item to cart');
                 }
 
-                
                 console.log('Item added to cart successfully');
 
-                
                 updateCartPage();
             } catch (error) {
                 console.error(error);
@@ -214,19 +216,18 @@
         }
 
         function updateCartPage() {
-            // Retrieve selected items from local storage
             const selectedItems = JSON.parse(localStorage.getItem('selectedItems')) || [];
-
-            // Add the latest item to the selected items array
             const latestItem = { product: 'Iphone 14 (256gb)', quantity: 1, price: 'RM3000' };
             selectedItems.push(latestItem);
-
-            // Update local storage with the modified selected items array
             localStorage.setItem('selectedItems', JSON.stringify(selectedItems));
-
-            // Redirect to the cart.html page
             window.location.href = 'https://iwsir.github.io/shoplah/cart.html';
+        }
+
+        // Function to manually view the cart
+        function viewCart() {
+            updateCartPage();
         }
     </script>
 </body>
+
 </html>
