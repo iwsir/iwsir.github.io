@@ -1,15 +1,19 @@
 <html>
-
 <head>
     <title>ShopLah</title>
     <link rel="icon" href="sunflower.jpg" type="image/jpg">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <style>
         h1 {
             color: white;
             text-align: center;
             font-size: 400%;
             text-decoration: underline;
+        }
+
+        body {
+            background-image: url("shopbg.jpg");
         }
 
         table.head {
@@ -37,10 +41,6 @@
             width: 25%;
             color: blue;
             text-decoration: underline;
-        }
-
-        body {
-            background-image: url("shopbg.jpg");
         }
 
         input[type=text],
@@ -97,6 +97,14 @@
             cursor: pointer;
             font-size: 16px;
         }
+
+        /* Style for the colorful box */
+        .colorful-box {
+            background-color: #FFD700; /* You can choose your preferred color code */
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px; /* Adjust margin as needed */
+        }
     </style>
 </head>
 
@@ -113,4 +121,12 @@
             </tr>
         </table>
     </center>
+
+    <div class="colorful-box">
+        <h1>Order Confirmed</h1>
+        <h2>Your order has been successfully added to the cart.</h2>
+    </div>
+</body>
+
+</html>
 
