@@ -4,6 +4,10 @@
     <title>ShopLah</title>
     <link rel="icon" href="sunflower.jpg" type="image/jpg">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script>
+        //popup box
+        window.alert("Please click on sign in for sign in \n")
+    </script>
     <style>
         body {
             background-image: url("shopbg.jpg");
@@ -105,18 +109,24 @@
 
         function registerUser(event) {
             event.preventDefault();
-            // Simulate storing user data (you would typically send this to a server)
-            const userData = {
-                firstName: document.getElementById("fname").value,
-                lastName: document.getElementById("lname").value,
-                country: document.getElementById("country").value,
-            };
 
-            // Store user data in localStorage for simplicity
-            localStorage.setItem("userData", JSON.stringify(userData));
+            
+            if (typeof Storage !== "undefined") {
+               
+                const userData = {
+                    firstName: document.getElementById("fname").value,
+                    lastName: document.getElementById("lname").value,
+                    country: document.getElementById("country").value,
+                };
 
-            // Redirect to shopping page
-            window.location.href = "https://iwsir.github.io/shoplah/shopping.html";
+               
+                localStorage.setItem("userData", JSON.stringify(userData));
+
+                
+                window.location.href = "https://iwsir.github.io/shoplah/shopping.html";
+            } else {
+                alert("Sorry, your browser does not support local storage. Please try a different browser.");
+            }
         }
     </script>
 </body>
