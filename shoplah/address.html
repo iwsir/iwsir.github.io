@@ -3,6 +3,7 @@
     <title>ShopLah</title>
     <link rel="icon" href="sunflower.jpg" type="image/jpg">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <style>
         body {
             background-image: url("shopbg.jpg");
@@ -75,6 +76,23 @@
         .footer-links li {
             margin-bottom: 10px;
         }
+
+        /* Rating Popup Styles */
+        .rating-popup {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            padding: 20px;
+            background-color: #fff;
+            border: 1px solid #ccc;
+            z-index: 1000;
+        }
+
+        .rating-popup label {
+            font-size: 24px;
+        }
     </style>
 </head>
 <body>
@@ -87,7 +105,6 @@
                     <th><a href="https://iwsir.github.io/shoplah/signin.html">Sign In</th>
                     <th><a href="https://iwsir.github.io/shoplah/shopping.html">Shopping</th>
                     <th><a href="https://iwsir.github.io/shoplah/address.html">About Us</th>
-                    <th><a href="https://iwsir.github.io/shoplah/contact.html">Cart</a></th>
                 </tr>
             </table>
         </center>
@@ -115,6 +132,34 @@
 
         <h2>Location</h2>
         <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d15953.739922644807!2d103.8689786!3d1.5088221!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31da6bcfe5cfa8b5%3A0x904f540e60191225!2sLittle%20Bear%20Preschool!5e0!3m2!1sen!2smy!4v1701403219258!5m2!1sen!2smy" frameborder="0" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+
+       
+        <div class="rating-popup" id="ratingPopup">
+            <label for="rating">Rate us:</label>
+            <input type="radio" name="rating" class="star" value="1" title="Poor">
+            <input type="radio" name="rating" class="star" value="2" title="Fair">
+            <input type="radio" name="rating" class="star" value="3" title="Good">
+            <input type="radio" name="rating" class="star" value="4" title="Very Good">
+            <input type="radio" name="rating" class="star" value="5" title="Excellent">
+            <br>
+            <button onclick="submitRating()">Submit</button>
+        </div>
     </section>
+
+<script>
+
+    function showRatingPopup() {
+        document.getElementById('ratingPopup').style.display = 'block';
+    }
+
+    function submitRating() {
+        window.alert('Thank you for your rating!');
+        document.getElementById('ratingPopup').style.display = 'none';
+    }
+
+    document.addEventListener("DOMContentLoaded", function () {
+        showRatingPopup();
+    });
+</script>
 </body>
 </html>
