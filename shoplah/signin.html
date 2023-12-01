@@ -1,4 +1,5 @@
 <html>
+
 <head>
     <title>ShopLah</title>
     <link rel="icon" href="sunflower.jpg" type="image/jpg">
@@ -20,7 +21,6 @@
             border: 0px;
         }
 
-        /* Style for the pop-up box */
         #popup {
             display: none;
             position: fixed;
@@ -76,18 +76,17 @@
         </table>
     </center>
 
-    <!-- The pop-up box -->
     <div id="popup">
         <h3>Sign In</h3>
-        <form action="/action_page.php">
+        <form onsubmit="registerUser(event)">
             <label for="fname">First Name</label>
-            <input type="text" id="fname" name="firstname" placeholder="Your name..">
+            <input type="text" id="fname" name="firstname" placeholder="Your name.." required>
 
             <label for="lname">Last Name</label>
-            <input type="text" id="lname" name="lastname" placeholder="Your last name..">
+            <input type="text" id="lname" name="lastname" placeholder="Your last name.." required>
 
             <label for="country">Country</label>
-            <select id="country" name="country">
+            <select id="country" name="country" required>
                 <option value="malaysia">Malaysia</option>
                 <option value="singapore">Singapore</option>
                 <option value="canada">Canada</option>
@@ -102,6 +101,22 @@
     <script>
         function showPopup() {
             document.getElementById("popup").style.display = "block";
+        }
+
+        function registerUser(event) {
+            event.preventDefault();
+            // Simulate storing user data (you would typically send this to a server)
+            const userData = {
+                firstName: document.getElementById("fname").value,
+                lastName: document.getElementById("lname").value,
+                country: document.getElementById("country").value,
+            };
+
+            // Store user data in localStorage for simplicity
+            localStorage.setItem("userData", JSON.stringify(userData));
+
+            // Redirect to shopping page
+            window.location.href = "https://iwsir.github.io/shoplah/shopping.html";
         }
     </script>
 </body>
