@@ -1,8 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
+
+<html>
 
 <head>
-    <meta charset="UTF-8">
+    
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ShopLah</title>
     <link rel="icon" href="sunflower.jpg" type="image/jpg">
@@ -137,31 +137,25 @@
         <button onclick="openModal()">Show Order Confirmed</button>
     </div>
 
-    <script>
-        function openModal() {
-            // Replace this with the actual data or logic to fetch selected items from the cart
-            var selectedItems = [
-                { product: "Product 1", quantity: 2, price: "$20.00" },
-                { product: "Product 2", quantity: 1, price: "$15.00" },
-            ];
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        // Retrieve selected items from local storage
+        const selectedItems = JSON.parse(localStorage.getItem('selectedItems')) || [];
 
-            var modalContent = "<h2>Selected Items:</h2><table class='con'>";
-            modalContent += "<tr><th>Product</th><th>Quantity</th><th>Price</th></tr>";
+        // Dynamically populate the cart content
+        const cartContent = document.getElementById('cart-content');
+        const tableHeader = "<tr><th>Product</th><th>Quantity</th><th>Price</th></tr>";
+        let tableRows = "";
 
-            selectedItems.forEach(function (item) {
-                modalContent += "<tr><td>" + item.product + "</td><td>" + item.quantity + "</td><td>" + item.price + "</td></tr>";
-            });
+        selectedItems.forEach(function (item) {
+            tableRows += `<tr><td>${item.product}</td><td>${item.quantity}</td><td>${item.price}</td></tr>`;
+        });
 
-            modalContent += "</table>";
-            document.getElementById("modal-content").innerHTML = modalContent;
+        cartContent.innerHTML = `<table class='con'>${tableHeader}${tableRows}</table>`;
+    });
+</script>
 
-            document.getElementById("order-confirmed-modal").style.display = "block";
-        }
 
-        function closeModal() {
-            document.getElementById("order-confirmed-modal").style.display = "none";
-        }
-    </script>
 </body>
 
 </html>
