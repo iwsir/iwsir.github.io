@@ -45,11 +45,12 @@
             border: none;
             cursor: pointer;
         }
+
+        .cart-icon {
+            font-size: 24px;
+            color: #4CAF50;
+        }
     </style>
-    <script>
-        //popup box
-        window.alert("Welcome to Shopping \n");
-    </script>
 </head>
 <body>
     <h1>Welcome to ShopLah's Shop</h1>
@@ -60,7 +61,7 @@
                 <th><a href="https://iwsir.github.io/shoplah/signin.html">Sign In</th>
                 <th><a href="https://iwsir.github.io/shoplah/shopping.html">Shopping</th>
                 <th><a href="https://iwsir.github.io/shoplah/address.html">Address</th>
-                <th><a href="https://iwsir.github.io/shoplah/contact.html">Contact Us</a></th>
+                <th><a href="https://iwsir.github.io/shoplah/contact.html">Cart</a></th>
             </tr>
         </table>
     </center>
@@ -77,11 +78,14 @@
             </tr>
             <tr>
                 <td>
-                    <button class="add-to-cart-btn" onclick="addToCart('Iphone 14 (256gb)', 'RM3000')">Add to cart</button>
+                    <button class="add-to-cart-btn" onclick="addToCart('Iphone 14 (256gb)', 'RM3000')">
+                        <i class="fas fa-shopping-cart cart-icon"></i> Add to cart
+                    </button>
                 </td>
             </tr>
         </table>
     </div>
+
     <div style="float:left; width:50%;">
         <img src="iphone14.jpg" height="400" width="400">
         <table class="con">
@@ -93,7 +97,9 @@
             </tr>
             <tr>
                 <td>
-                    <button class="add-to-cart-btn" onclick="addToCart('Iphone 14 Pro Max (256gb)', 'RM4800')">Add to cart</button>
+                    <button class="add-to-cart-btn" onclick="addToCart('Iphone 14 Pro Max (256gb)', 'RM4800')">
+                        <i class="fas fa-shopping-cart cart-icon"></i> Add to cart
+                    </button>
                 </td>
             </tr>
         </table>
@@ -102,6 +108,7 @@
     <br>
     <br>
     <br>
+
     <div style="float:left; width:50%;">
         <img src="iphone1.jpg" height="400" width="400">
         <table class="con">
@@ -113,11 +120,14 @@
             </tr>
             <tr>
                 <td>
-                    <button class="add-to-cart-btn" onclick="addToCart('Iphone 15 (256gb)', 'RM4500')">Add to cart</button>
+                    <button class="add-to-cart-btn" onclick="addToCart('Iphone 15 (256gb)', 'RM4500')">
+                        <i class="fas fa-shopping-cart cart-icon"></i> Add to cart
+                    </button>
                 </td>
             </tr>
         </table>
     </div>
+
     <div style="float:left; width:50%;">
         <img src="iphone15.jpg" height="400" width="400">
         <table class="con">
@@ -129,17 +139,25 @@
             </tr>
             <tr>
                 <td>
-                    <button class="add-to-cart-btn" onclick="addToCart('Iphone 15 Pro Max (256gb)', 'RM5800')">Add to cart</button>
+                    <button class="add-to-cart-btn" onclick="addToCart('Iphone 15 Pro Max (256gb)', 'RM5800')">
+                        <i class="fas fa-shopping-cart cart-icon"></i> Add to cart
+                    </button>
                 </td>
             </tr>
         </table>
     </div>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/js/all.min.js"></script>
+
     <script>
         function addToCart(item, price) {
-            window.alert('Added to cart:\n' + item + '\nPrice: ' + price);
-          
+            const confirmation = window.confirm('Added to cart:\n' + item + '\nPrice: ' + price + '\nGo to Cart?');
+            
+            if (confirmation) {
+                window.location.href = "https://iwsir.github.io/shoplah/cart.html"; // Replace with your actual cart page URL
+            }
         }
     </script>
 </body>
 </html>
+
