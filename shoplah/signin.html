@@ -1,119 +1,109 @@
 <html>
-<title>ShopLah</title>
-<link rel=icon href=sunflower.jpg type=image/jpg>
-<meta name=viewport content=width=device-width, initial-scale=1.0>
+<head>
+    <title>ShopLah</title>
+    <link rel="icon" href="sunflower.jpg" type="image/jpg">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            background-image: url("shopbg.jpg");
+        }
+
+        h1 {
+            color: white;
+            text-align: center;
+            font-size: 400%;
+            text-decoration: underline;
+        }
+
+        table.head {
+            width: 100%;
+            border: 0px;
+        }
+
+        /* Style for the pop-up box */
+        #popup {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            padding: 20px;
+            background-color: #f2f2f2;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            z-index: 1;
+        }
+
+        input[type=text],
+        select {
+            width: 100%;
+            padding: 12px 20px;
+            margin: 8px 0;
+            display: inline-block;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        input[type=submit] {
+            width: 100%;
+            background-color: purple;
+            color: white;
+            padding: 14px 20px;
+            margin: 8px 0;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        input[type=submit]:hover {
+            background-color: #6a0dad;
+        }
+    </style>
 </head>
-<style>
-body{
-background-image: url("shopbg.jpg");
-}
-    
-h1{
-color:white;
-text-align:center;
-font-size: 400%;
-text-decoration: underline;
-}
-    
-table.head{
-width:100%;
-border:0px;
-}
-    
-table.con{
-width:1305px;
-border:0px;
-}
-    
-td{
-font-size: 200%;
-background-color:white;
-text-align:center;
-}
-    
-th{
-font-size: 200%;
-background-color:white;
-}
-    
-th.cart{
-width:25%;
-color:blue;
-text-decoration: underline;
-}
-    
-</style>
 
-
-<h1>Welcome to ShopLah's Shop</h1>
-<center>
-    <table class="head">
-    <tr>
-    <th><a href="https://iwsir.github.io/shoplah/shoplah1.html">Home</a></th>
-    <th><a href="https://iwsir.github.io/shoplah/signin.html">Sign In</th>
-    <th><a href="https://iwsir.github.io/shoplah/shopping.html">Shopping</th>
-    <th><a href="https://iwsir.github.io/shoplah/address.html">Address</th>
-    <th><a href="https://iwsir.github.io/shoplah/contact.html">Contact Us</a></th>
-<style>
-input[type=text], select {
-  width: 100%;
-  padding: 12px 20px;
-  margin: 8px 0;
-  display: inline-block;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  box-sizing: border-box;
-}
-
-input[type=submit] {
-  width: 100%;
-  background-color: #4CAF50;
-  color: white;
-  padding: 14px 20px;
-  margin: 8px 0;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-}
-
-input[type=submit]:hover {
-  background-color: #45a049;
-}
-
-div {
-  border-radius: 5px;
-  background-color: #f2f2f2;
-  padding: 20px;
-}
-</style>
 <body>
+    <h1>Welcome to ShopLah's Shop</h1>
+    <center>
+        <table class="head">
+            <tr>
+                <th><a href="https://iwsir.github.io/shoplah/shoplah1.html">Home</a></th>
+                <th><a href="#" onclick="showPopup()">Sign In</a></th>
+                <th><a href="https://iwsir.github.io/shoplah/shopping.html">Shopping</a></th>
+                <th><a href="https://iwsir.github.io/shoplah/address.html">Address</a></th>
+                <th><a href="https://iwsir.github.io/shoplah/contact.html">Contact Us</a></th>
+            </tr>
+        </table>
+    </center>
 
-<h3>Sign In</h3>
+    <!-- The pop-up box -->
+    <div id="popup">
+        <h3>Sign In</h3>
+        <form action="/action_page.php">
+            <label for="fname">First Name</label>
+            <input type="text" id="fname" name="firstname" placeholder="Your name..">
 
-<div>
-  <form action="/action_page.php">
-    <label for="fname">First Name</label>
-    <input type="text" id="fname" name="firstname" placeholder="Your name..">
+            <label for="lname">Last Name</label>
+            <input type="text" id="lname" name="lastname" placeholder="Your last name..">
 
-    <label for="lname">Last Name</label>
-    <input type="text" id="lname" name="lastname" placeholder="Your last name..">
+            <label for="country">Country</label>
+            <select id="country" name="country">
+                <option value="malaysia">Malaysia</option>
+                <option value="singapore">Singapore</option>
+                <option value="canada">Canada</option>
+                <option value="usa">USA</option>
+                <option value="australia">Australia</option>
+            </select>
 
-    <label for="country">Country</label>
-    <select id="country" name="country">
-      <option value="malaysia">Malaysia</option>
-	  <option value="singapure">Singapure</option>
-      <option value="canada">Canada</option>
-      <option value="usa">USA</option>
-	  <option value="usa">Australia</option>
-    </select>
-  
-    <input type="submit" value="Submit">
-<script>
-//popup box
-window.alert("Hello Welcome to sign in our ShopLah \n" )
-</script>
-  </form>
-</div>
+            <input type="submit" value="Submit">
+        </form>
+    </div>
 
+    <script>
+        function showPopup() {
+            document.getElementById("popup").style.display = "block";
+        }
+    </script>
 </body>
+
 </html>
