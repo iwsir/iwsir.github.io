@@ -26,7 +26,8 @@
             margin-top: 20px;
         }
 
-        td, th {
+        td,
+        th {
             font-size: 150%;
             background-color: white;
             text-align: center;
@@ -185,50 +186,48 @@
         }
 
         function confirmAddToCart() {
-            window.location.href = "https://iwsir.github.io/shoplah/cart.html";
+            addToCart('Iphone 14 (256gb)', 'RM3000');
+        }
+
+        async function addToCart(product, price) {
+            try {
+                const response = await fetch('http://localhost:3000/api/cart', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ product, quantity: 1, price }),
+                });
+
+                if (!response.ok) {
+                    throw new Error('Failed to add item to cart');
+                }
+
+                // Log success or handle it as needed
+                console.log('Item added to cart successfully');
+
+                // After adding to cart, update the cart.html page
+                updateCartPage();
+            } catch (error) {
+                console.error(error);
+            }
+        }
+
+        function updateCartPage() {
+            // Retrieve selected items from local storage
+            const selectedItems = JSON.parse(localStorage.getItem('selectedItems')) || [];
+
+            // Add the latest item to the selected items array
+            const latestItem = { product: 'Iphone 14 (256gb)', quantity: 1, price: 'RM3000' };
+            selectedItems.push(latestItem);
+
+            // Update local storage with the modified selected items array
+            localStorage.setItem('selectedItems', JSON.stringify(selectedItems));
+
+            // Redirect to the cart.html page
+            window.location.href = 'file:///C:/Users/Yu%20Jian/OneDrive/%E6%96%87%E6%A1%A3/Cresendo/cart.html';
         }
     </script>
-	<script>
-    async function addToCart(product, price) {
-        try {
-            const response = await fetch('http://localhost:3000/api/cart', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({ product, quantity: 1, price }),
-            });
-
-            if (!response.ok) {
-                throw new Error('Failed to add item to cart');
-            }
-
-            // Log success or handle it as needed
-            console.log('Item added to cart successfully');
-
-            // After adding to cart, update the cart.html page
-            updateCartPage();
-        } catch (error) {
-            console.error(error);
-        }
-    }
-
-    function updateCartPage() {
-        // Retrieve selected items from local storage
-        const selectedItems = JSON.parse(localStorage.getItem('selectedItems')) || [];
-
-        // Add the latest item to the selected items array
-        const latestItem = { product: 'Iphone 14 (256gb)', quantity: 1, price: 'RM3000' };
-        selectedItems.push(latestItem);
-
-        // Update local storage with the modified selected items array
-        localStorage.setItem('selectedItems', JSON.stringify(selectedItems));
-
-        // Redirect to the cart.html page
-        window.location.href = 'file:///C:/Users/Yu%20Jian/OneDrive/%E6%96%87%E6%A1%A3/Cresendo/cart.html';
-    }
-</script>
-
 </body>
 
 </html>
