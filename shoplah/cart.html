@@ -1,4 +1,3 @@
-
 <html>
 
 <head>
@@ -128,33 +127,33 @@
     <div id="order-confirmed-modal" class="modal">
         <div class="modal-content" id="modal-content">
             <h1>Order Confirmed</h1>
-            <!-- Dynamic content will be added here -->
+            <p>Your order has been confirmed. Thank you for shopping with us!</p>
             <button class="modal-close" onclick="closeModal()">Close</button>
         </div>
     </div>
 
     <div class="colorful-box">
-        <button onclick="openModal()">Show Order Confirmed</button>
+        <button onclick="confirmAddToCart()">Confirm and Show Order Confirmation</button>
     </div>
 
 <script>
-    document.addEventListener('DOMContentLoaded', function () {
-        // Retrieve selected items from local storage
-        const selectedItems = JSON.parse(localStorage.getItem('selectedItems')) || [];
+    function openModal() {
+        document.getElementById('order-confirmed-modal').style.display = 'block';
+    }
 
-        // Dynamically populate the cart content
-        const cartContent = document.getElementById('cart-content');
-        const tableHeader = "<tr><th>Product</th><th>Quantity</th><th>Price</th></tr>";
-        let tableRows = "";
+    function closeModal() {
+        document.getElementById('order-confirmed-modal').style.display = 'none';
+    }
 
-        selectedItems.forEach(function (item) {
-            tableRows += `<tr><td>${item.product}</td><td>${item.quantity}</td><td>${item.price}</td></tr>`;
-        });
+    async function confirmAddToCart() {
+        addToCart('Iphone 14 (256gb)', 'RM3000');
+        openModal();
+    }
 
-        cartContent.innerHTML = `<table class='con'>${tableHeader}${tableRows}</table>`;
-    });
+    async function addToCart(product, price) {
+        // Your existing addToCart logic
+    }
 </script>
-
 
 </body>
 
