@@ -1,8 +1,11 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
+
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ShopLah</title>
     <link rel="icon" href="sunflower.jpg" type="image/jpg">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <style>
         h1 {
@@ -69,7 +72,7 @@
             background-color: #45a049;
         }
 
-        div.modal {
+        .modal {
             display: none;
             position: fixed;
             top: 50%;
@@ -83,7 +86,7 @@
         }
 
         .modal-content {
-            color: #333;
+            color: black; /* Change the text color to black */
             text-align: center;
             font-size: 18px;
         }
@@ -98,22 +101,11 @@
             font-size: 16px;
         }
 
-        /* Style for the colorful box */
         .colorful-box {
             background-color: #FFD700;
             padding: 20px;
             border-radius: 10px;
             margin: 20px;
-        }
-
-        /* New style for displaying selected items */
-        .selected-items {
-            width: 80%;
-            margin: 20px auto;
-            padding: 10px;
-            background-color: #ffffff;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
         }
     </style>
 </head>
@@ -132,48 +124,43 @@
         </table>
     </center>
 
-    <div class="colorful-box">
-        <h1>Order Confirmed</h1>
-        <h2>Your order has been successfully added to the cart.</h2>
+    <!-- New popup modal for Order Confirmed -->
+    <div id="order-confirmed-modal" class="modal">
+        <div class="modal-content" id="modal-content">
+            <h1>Order Confirmed</h1>
+            <!-- Dynamic content will be added here -->
+            <button class="modal-close" onclick="closeModal()">Close</button>
+        </div>
     </div>
 
-    <!-- New section to display selected items -->
-    <div class="selected-items">
-        <h2>Selected Items:</h2>
-        <table class="con" id="selected-items-table">
-            <!-- Table headers -->
-            <tr>
-                <th>Product</th>
-                <th>Quantity</th>
-                <th>Price</th>
-            </tr>
-        </table>
+    <div class="colorful-box">
+        <button onclick="openModal()">Show Order Confirmed</button>
     </div>
 
     <script>
-        // Example JavaScript to dynamically populate the selected items table
-        document.addEventListener("DOMContentLoaded", function () {
+        function openModal() {
             // Replace this with the actual data or logic to fetch selected items from the cart
             var selectedItems = [
                 { product: "Product 1", quantity: 2, price: "$20.00" },
                 { product: "Product 2", quantity: 1, price: "$15.00" },
             ];
 
-            // Get the table element
-            var table = document.getElementById("selected-items-table");
+            var modalContent = "<h2>Selected Items:</h2><table class='con'>";
+            modalContent += "<tr><th>Product</th><th>Quantity</th><th>Price</th></tr>";
 
-            // Populate the table with selected items
             selectedItems.forEach(function (item) {
-                var row = table.insertRow(-1); // Insert at the end of the table
-                var cell1 = row.insertCell(0);
-                var cell2 = row.insertCell(1);
-                var cell3 = row.insertCell(2);
-
-                cell1.textContent = item.product;
-                cell2.textContent = item.quantity;
-                cell3.textContent = item.price;
+                modalContent += "<tr><td>" + item.product + "</td><td>" + item.quantity + "</td><td>" + item.price + "</td></tr>";
             });
-        });
+
+            modalContent += "</table>";
+            document.getElementById("modal-content").innerHTML = modalContent;
+
+            document.getElementById("order-confirmed-modal").style.display = "block";
+        }
+
+        function closeModal() {
+            document.getElementById("order-confirmed-modal").style.display = "none";
+        }
     </script>
 </body>
 
