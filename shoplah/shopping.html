@@ -1,108 +1,145 @@
 <html>
 <head>
-<title>ShopLah</title>
-<link rel=icon href=sunflower.jpg type=image/jpg>
-<meta name=viewport content=width=device-width, initial-scale=1.0>
-</head>
-<script>
-//popup box
-window.alert("Welcome to Shopping \n" )
-</script>
-<style>
-body{
-background-image: url("shopbg.jpg");
-}
+    <title>ShopLah</title>
+    <link rel="icon" href="sunflower.jpg" type="image/jpg">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            background-image: url("shopbg.jpg");
+        }
 
-    
-    h1{
-    text-align:center;
-    font-size: 400%;
-    text-decoration: underline;
-    }
-    
-    table.head{
-    width:100%;
-    border:0px;
-    }
-    
-    table.con{
-    width:1305px;
-    border:0px;
-    }
-    
-    td{
-    font-size: 200%;
-    background-color:white;
-text-align:center;
-    }
-    
-    th{
-    font-size: 200%;
-    background-color:white;
-    }
-    
-    th.cart{
-    width:25%;
-    color:blue;
-    text-decoration: underline;
-    }
-    
+        h1 {
+            text-align: center;
+            font-size: 400%;
+            text-decoration: underline;
+        }
+
+        table.head {
+            width: 100%;
+            border: 0px;
+        }
+
+        table.con {
+            width: 100%;
+            border: 1px solid white;
+            margin-top: 20px;
+        }
+
+        td, th {
+            font-size: 150%;
+            background-color: white;
+            text-align: center;
+            padding: 10px;
+        }
+
+        th.cart {
+            color: blue;
+            text-decoration: underline;
+        }
+
+        .add-to-cart-btn {
+            padding: 5px 10px;
+            font-size: 100%;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
     </style>
-<h1>Welcome to ShopLah's Shop</h1>
-<center>
-    <table class="head">
-    <tr>
-   <th><a href="https://iwsir.github.io/shoplah/shoplah1.html">Home</a></th>
-    <th><a href="https://iwsir.github.io/shoplah/signin.html">Sign In</th>
-    <th><a href="https://iwsir.github.io/shoplah/shopping.html">Shopping</th>
-    <th><a href="https://iwsir.github.io/shoplah/address.html">Address</th>
-    <th><a href="https://iwsir.github.io/shoplah/contact.html">Contact Us</a></th>
-    </tr>
-    </table>
+    <script>
+        //popup box
+        window.alert("Welcome to Shopping \n");
+    </script>
+</head>
+<body>
+    <h1>Welcome to ShopLah's Shop</h1>
+    <center>
+        <table class="head">
+            <tr>
+                <th><a href="https://iwsir.github.io/shoplah/shoplah1.html">Home</a></th>
+                <th><a href="https://iwsir.github.io/shoplah/signin.html">Sign In</th>
+                <th><a href="https://iwsir.github.io/shoplah/shopping.html">Shopping</th>
+                <th><a href="https://iwsir.github.io/shoplah/address.html">Address</th>
+                <th><a href="https://iwsir.github.io/shoplah/contact.html">Contact Us</a></th>
+            </tr>
+        </table>
     </center>
     <br>
-   <img src="iphone.jpg"  height=650 width=650 align=left></a>
-    
-    <img src="iphone14.jpg"  height=650 width=650 align=left></a>
-    <table class="con">
-    <tr>
-    <td width=50%>Iphone 14 (256gb)</td>
-    <td width=50%>Iphone 14 Pro Max (256gb)</td>
-    </tr>
-    
-    <tr>
-    <td width=50%>RM3000</td>
- <td width=50%>RM4800</td>
-    </tr>
-    
-    <tr>
-    <td width=50% onclick="window.alert('Please login first before add to cart')">Add to cart</td>
-    <td width=50%  onclick="window.alert('Please login first before add to cart')">Add to cart</td>
-    </tr>
-    </table>
+    <div style="clear:both;"></div>
+    <div style="float:left; width:50%;">
+        <img src="iphone.jpg" height="400" width="400">
+        <table class="con">
+            <tr>
+                <th>Iphone 14 (256gb)</th>
+            </tr>
+            <tr>
+                <td>RM3000</td>
+            </tr>
+            <tr>
+                <td>
+                    <button class="add-to-cart-btn" onclick="addToCart('Iphone 14 (256gb)', 'RM3000')">Add to cart</button>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div style="float:left; width:50%;">
+        <img src="iphone14.jpg" height="400" width="400">
+        <table class="con">
+            <tr>
+                <th>Iphone 14 Pro Max (256gb)</th>
+            </tr>
+            <tr>
+                <td>RM4800</td>
+            </tr>
+            <tr>
+                <td>
+                    <button class="add-to-cart-btn" onclick="addToCart('Iphone 14 Pro Max (256gb)', 'RM4800')">Add to cart</button>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div style="clear:both;"></div>
     <br>
     <br>
     <br>
-    <br>
-    <br>
-    <br>
-  <img src="iphone1.jpg"  height=650 width=650 align=left></a>
-    
-   <img src="iphone15.jpg"  height=650 width=650 align=left></a>
-    <table class="con">
-    <tr>
-    <td width=50%>Iphone 15 (256gb)</td>
-    <td width=50%>Iphone 15 Pro Max (256gb)</td>
-    </tr>
-    
-    <tr>
-    <td width=50%>RM4500</td>
-    <td width=50%>RM5800</td>
-    </tr>
-    
-    <tr>
-    <td width=50% onclick="window.alert('Please log in first before add to cart')">Add to cart</td>
-    <td width=50% onclick="window.alert('Please log in first before add to cart')">Add to cart</td>
-    </tr>
-    </table>
-    </html>
+    <div style="float:left; width:50%;">
+        <img src="iphone1.jpg" height="400" width="400">
+        <table class="con">
+            <tr>
+                <th>Iphone 15 (256gb)</th>
+            </tr>
+            <tr>
+                <td>RM4500</td>
+            </tr>
+            <tr>
+                <td>
+                    <button class="add-to-cart-btn" onclick="addToCart('Iphone 15 (256gb)', 'RM4500')">Add to cart</button>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div style="float:left; width:50%;">
+        <img src="iphone15.jpg" height="400" width="400">
+        <table class="con">
+            <tr>
+                <th>Iphone 15 Pro Max (256gb)</th>
+            </tr>
+            <tr>
+                <td>RM5800</td>
+            </tr>
+            <tr>
+                <td>
+                    <button class="add-to-cart-btn" onclick="addToCart('Iphone 15 Pro Max (256gb)', 'RM5800')">Add to cart</button>
+                </td>
+            </tr>
+        </table>
+    </div>
+
+    <script>
+        function addToCart(item, price) {
+            window.alert('Added to cart:\n' + item + '\nPrice: ' + price);
+          
+        }
+    </script>
+</body>
+</html>
