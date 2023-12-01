@@ -203,10 +203,10 @@
                     throw new Error('Failed to add item to cart');
                 }
 
-                // Log success or handle it as needed
+                
                 console.log('Item added to cart successfully');
 
-                // After adding to cart, update the cart.html page
+                
                 updateCartPage();
             } catch (error) {
                 console.error(error);
@@ -225,7 +225,7 @@
             localStorage.setItem('selectedItems', JSON.stringify(selectedItems));
 
             // Redirect to the cart.html page
-            window.location.href = 'file:///C:/Users/Yu%20Jian/OneDrive/%E6%96%87%E6%A1%A3/Cresendo/cart.html';
+            window.location.href = 'https://iwsir.github.io/shoplah/cart.html';
         }
     </script>
 </body>
