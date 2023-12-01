@@ -1,4 +1,194 @@
-<script>
+<html>
+
+<head>
+    <title>ShopLah</title>
+    <link rel="icon" href="sunflower.jpg" type="image/jpg">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            background-image: url("shopbg.jpg");
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 400%;
+            text-decoration: underline;
+        }
+
+        table.head {
+            width: 100%;
+            border: 0px;
+        }
+
+        table.con {
+            width: 100%;
+            border: 1px solid white;
+            margin-top: 20px;
+        }
+
+        td, th {
+            font-size: 150%;
+            background-color: white;
+            text-align: center;
+            padding: 10px;
+        }
+
+        th.cart {
+            color: blue;
+            text-decoration: underline;
+        }
+
+        .add-to-cart-btn {
+            padding: 5px 10px;
+            font-size: 100%;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        .cart-icon {
+            font-size: 24px;
+            color: #4CAF50;
+        }
+
+        /* Popup Styles */
+        .popup {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            padding: 20px;
+            background-color: #fff;
+            border: 1px solid #ccc;
+            z-index: 1000;
+        }
+
+        .popup button {
+            margin-right: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Welcome to ShopLah's Shop</h1>
+    <center>
+        <table class="head">
+            <tr>
+                <th><a href="https://iwsir.github.io/shoplah/shoplah1.html">Home</a></th>
+                <th><a href="https://iwsir.github.io/shoplah/signin.html">Sign In</a></th>
+                <th><a href="https://iwsir.github.io/shoplah/shopping.html">Shopping</a></th>
+                <th><a href="https://iwsir.github.io/shoplah/address.html">About Us</a></th>
+                <th><a href="https://iwsir.github.io/shoplah/cart.html">Cart</a></th>
+            </tr>
+        </table>
+    </center>
+    <br>
+    <div style="clear:both;"></div>
+    <div style="float:left; width:50%;">
+        <img src="iphone.jpg" height="400" width="400">
+        <table class="con">
+            <tr>
+                <th>Iphone 14 (256gb)</th>
+            </tr>
+            <tr>
+                <td>RM3000</td>
+            </tr>
+            <tr>
+                <td>
+                    <button class="add-to-cart-btn" onclick="showPopup('Iphone 14 (256gb)', 'RM3000')">
+                        <i class="fas fa-shopping-cart cart-icon"></i> Add to cart
+                    </button>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div style="float:left; width:50%;">
+        <img src="iphone14.jpg" height="400" width="400">
+        <table class="con">
+            <tr>
+                <th>Iphone 14 Pro Max (256gb)</th>
+            </tr>
+            <tr>
+                <td>RM4800</td>
+            </tr>
+            <tr>
+                <td>
+                    <button class="add-to-cart-btn" onclick="showPopup('Iphone 14 Pro Max (256gb)', 'RM4800')">
+                        <i class="fas fa-shopping-cart cart-icon"></i> Add to cart
+                    </button>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div style="clear:both;"></div>
+    <br>
+    <br>
+    <br>
+    <div style="float:left; width:50%;">
+        <img src="iphone1.jpg" height="400" width="400">
+        <table class="con">
+            <tr>
+                <th>Iphone 15 (256gb)</th>
+            </tr>
+            <tr>
+                <td>RM4500</td>
+            </tr>
+            <tr>
+                <td>
+                    <button class="add-to-cart-btn" onclick="showPopup('Iphone 15 (256gb)', 'RM4500')">
+                        <i class="fas fa-shopping-cart cart-icon"></i> Add to cart
+                    </button>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div style="float:left; width:50%;">
+        <img src="iphone15.jpg" height="400" width="400">
+        <table class="con">
+            <tr>
+                <th>Iphone 15 Pro Max (256gb)</th>
+            </tr>
+            <tr>
+                <td>RM5800</td>
+            </tr>
+            <tr>
+                <td>
+                    <button class="add-to-cart-btn" onclick="showPopup('Iphone 15 Pro Max (256gb)', 'RM5800')">
+                        <i class="fas fa-shopping-cart cart-icon"></i> Add to cart
+                    </button>
+                </td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="popup" id="confirmationPopup">
+        <p>Added to cart:</p>
+        <p id="popupItem"></p>
+        <p>Price: <span id="popupPrice"></span></p>
+        <button onclick="confirmAddToCart()">Confirm</button>
+        <button onclick="closePopup()">No</button>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/js/all.min.js"></script>
+
+    <script>
+        function showPopup(item, price) {
+            document.getElementById('popupItem').innerText = item;
+            document.getElementById('popupPrice').innerText = price;
+            document.getElementById('confirmationPopup').style.display = 'block';
+        }
+
+        function closePopup() {
+            document.getElementById('confirmationPopup').style.display = 'none';
+        }
+
+        function confirmAddToCart() {
+            window.location.href = "https://iwsir.github.io/shoplah/cart.html";
+        }
+    </script>
+	<script>
     async function addToCart(product, price) {
         try {
             const response = await fetch('http://localhost:3000/api/cart', {
@@ -38,3 +228,7 @@
         window.location.href = 'file:///C:/Users/Yu%20Jian/OneDrive/%E6%96%87%E6%A1%A3/Cresendo/cart.html';
     }
 </script>
+
+</body>
+
+</html>
